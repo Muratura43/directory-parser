@@ -149,6 +149,13 @@ void func(int sockfd)
         read(sockfd, buff, sizeof(buff));
         // print buffer which contains the client contents
         printf("From client: %s\t To client : ", buff);
+
+        if (strncmp("files", buff, 5) == 0)
+        {
+            printf("List of files");
+            print_directory_tree(".");
+        }
+
         memset(buff, 0, MAX);
         n = 0;
         // copy server message in the buffer
@@ -158,11 +165,6 @@ void func(int sockfd)
         // and send that buffer to client
         write(sockfd, buff, sizeof(buff));
 
-        if (strncmp("files", buff, 5) == 0)
-        {
-            printf("List of files");
-            print_directory_tree(".");
-        }
         // if msg contains "Exit" then server exit and chat ended.
         if (strncmp("exit", buff, 4) == 0)
         {

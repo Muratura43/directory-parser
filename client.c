@@ -21,13 +21,13 @@ void func(int sockfd)
     int n;
     for (;;)
     {
-        bzero(buff, sizeof(buff));
+        memset(buff, 0, sizeof(buff));
         printf("Enter the string : ");
         n = 0;
         while ((buff[n++] = getchar()) != '\n')
             ;
-        write(sockfd, buff, sizeof(buff) + 1);
-        bzero(buff, sizeof(buff));
+        write(sockfd, buff, sizeof(buff));
+        memset(buff, 0, sizeof(buff));
         read(sockfd, buff, sizeof(buff));
         printf("From Server : %s", buff);
         if ((strncmp(buff, "exit", 4)) == 0)
@@ -52,7 +52,7 @@ int main()
     }
     else
         printf("Socket successfully created..\n");
-    bzero(&servaddr, sizeof(servaddr));
+    memset(&servaddr, 0, sizeof(servaddr));
 
     // assign IP, PORT
     servaddr.sin_family = AF_INET;
