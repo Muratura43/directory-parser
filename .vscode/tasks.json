@@ -1,0 +1,64 @@
+// Available variables which can be used inside of strings.
+// ${workspaceRoot}: the root folder of the team
+// ${file}: the current opened file
+// ${fileBasename}: the current opened file's basename
+// ${fileDirname}: the current opened file's dirname
+// ${fileExtname}: the current opened file's extension
+// ${cwd}: the current working directory of the spawned process
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: gcc build",
+            "command": "/usr/bin/gcc",
+            "args": [
+                "${fileDirname}/**.c",
+                "${fileDirname}/**.h",
+                "${workspaceFolder}/lib/**/**.c",
+                "-o",
+                "${fileDirname}/build/${fileBasenameNoExtension}",
+                "-lpthread",
+                "-lnsl",
+                "-luv"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "compiler: /usr/bin/gcc",
+        },
+        {
+            "label": "Run server",
+            "type": "shell",
+            "command": "${workspaceRoot}/server/build/server",
+            "group": "test",
+            "presentation": {
+                "group": "groupServerStuff"
+            },
+        },
+        {
+            "label": "Run client",
+            "type": "shell",
+            "command": "${workspaceRoot}/client/build/client",
+            "group": "test",
+            "presentation": {
+                "group": "groupServerStuff"
+            }
+        },
+        {
+            "label": "Test setup",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Run server",
+                "Run client"
+            ]
+        }
+    ]
+}
