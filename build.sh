@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc main.c -Wall -o parse.out -v
+gcc main.c dir.c -Wall -o parse.out -v
