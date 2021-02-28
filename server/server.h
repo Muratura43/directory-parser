@@ -16,7 +16,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <fcntl.h> //fcntl
-#include <sys/time.h>
+
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
 void socketThread(int clientSocket);
