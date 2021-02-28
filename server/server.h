@@ -10,12 +10,13 @@
 #include <string.h>
 #include <arpa/inet.h>
 #include <fcntl.h>  // for open
-#include <unistd.h> // for close
+#include <unistd.h> // for close, usleep
 #include <sys/types.h>
 #include <pthread.h>
 #include <unistd.h>
 #include <sys/wait.h>
-
+#include <fcntl.h> //fcntl
+#include <time.h>
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
 void socketThread(int clientSocket);
