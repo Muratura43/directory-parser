@@ -7,7 +7,8 @@
 int recv_timeout(int s, int timeout)
 {
     int size_recv, total_size = 0;
-    struct timeval begin, now;
+    struct timeval begin;
+    struct timeval now;
     char chunk[CHUNK_SIZE];
     double timediff;
 
