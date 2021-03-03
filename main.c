@@ -6,26 +6,18 @@
 
 int main(int argc, char *argv[])
 {
-    int arg;
+    struct OPTIONS opt;
+    opt.root_file_path = ".";
+    opt.verbose = false;
+    opt.include_links = false;
+    opt.include_directories = false;
+    opt.include_unreadable = false;
+    opt.include_unknown = false;
 
-    if (argc < 2)
+    if (print_directory_tree(&opt))
     {
-        if (print_directory_tree("."))
-        {
-            fprintf(stderr, "%s.\n", strerror(errno));
-            return EXIT_FAILURE;
-        }
-    }
-    else
-    {
-        for (arg = 1; arg < argc; arg++)
-        {
-            if (print_directory_tree(argv[arg]))
-            {
-                fprintf(stderr, "%s.\n", strerror(errno));
-                return EXIT_FAILURE;
-            }
-        }
+        fprintf(stderr, "%s.\n", strerror(errno));
+        return EXIT_FAILURE;
     }
 
     return EXIT_SUCCESS;
