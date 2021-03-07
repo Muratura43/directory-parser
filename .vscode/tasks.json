@@ -10,17 +10,13 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C/C++: gcc build",
+            "label": "C/C++: gcc build main",
             "command": "/usr/bin/gcc",
             "args": [
-                "${fileDirname}/**.c",
-                "${fileDirname}/**.h",
-                "${workspaceFolder}/lib/**/**.c",
+                "-g",
+                "*.c",
                 "-o",
-                "${fileDirname}/build/${fileBasenameNoExtension}",
-                "-lpthread",
-                "-lnsl",
-                "-luv"
+                "${fileDirname}/${fileBasenameNoExtension}.out"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
