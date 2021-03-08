@@ -1,0 +1,20 @@
+{"C_Cpp.default.includePath": [
+    "{$workspaceFolder}/lib/**",
+    "{$workspaceFolder}/**"
+],
+"C_Cpp.intelliSenseEngine": "Tag Parser",
+    "files.associations": {
+        "unistd.h": "c",
+        "stdlib.h": "c",
+        "inet.h": "c",
+        "server.h": "c",
+        "parser.h": "c",
+        "client.h": "c",
+        "cstdlib": "c",
+        "wait.h": "c",
+        "errno.h": "c",
+        "types.h": "c",
+        "stat.h": "c",
+        "time.h": "c"
+    }
+}
