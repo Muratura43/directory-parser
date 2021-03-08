@@ -13,13 +13,18 @@
             "label": "C/C++: gcc build main",
             "command": "/usr/bin/gcc",
             "args": [
+                "-D_XOPEN_SOURCE=500",
                 "-g",
+                "-pthread",
                 "*.c",
+                "${workspaceFolder}/lib/parser/*c",
+                "${workspaceFolder}/lib/parser/*h",
+                "-I${workspaceFolder}/lib/parser/*h",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.out"
+                "${fileDirname}/build/${fileBasenameNoExtension}.out"
             ],
             "options": {
-                "cwd": "${workspaceFolder}"
+                "cwd": "${fileDirname}"
             },
             "problemMatcher": [
                 "$gcc"

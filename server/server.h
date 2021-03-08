@@ -18,6 +18,7 @@
 #include <fcntl.h> //fcntl
 
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+#define BUFF_SIZE 2048
 
 void socketThread(int clientSocket);
 

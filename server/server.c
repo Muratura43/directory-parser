@@ -2,12 +2,12 @@
 
 void socketThread(int clientSocket)
 {
-    char client_message[2000];
-    char buffer[1024];
+    char client_message[BUFF_SIZE];
+    char buffer[BUFF_SIZE];
     int newSocket = clientSocket;
 
     //Receive a reply from the client
-    if (recv(newSocket, client_message, 2000, 0) < 0)
+    if (recv(newSocket, client_message, BUFF_SIZE, 0) < 0)
     {
         perror("Recv failed");
         exit(1);
@@ -32,7 +32,7 @@ void socketThread(int clientSocket)
 
 int main()
 {
-    short serverPort = 8080;
+    short serverPort = 49152;
     const char *serverIp = "127.0.0.1";
 
     int serverSocket, newSocket;

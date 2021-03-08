@@ -40,7 +40,7 @@ int recv_timeout(int s, int timeout)
         memset(chunk, 0, CHUNK_SIZE); //clear the variable
         if ((size_recv = recv(s, chunk, CHUNK_SIZE, 0)) < 0)
         {
-            //if nothing was received then we want to wait a little before trying again, 0.1 seconds
+            //if nothing was rece   ived then we want to wait a little before trying again, 0.1 seconds
             usleep(100000);
         }
         else
@@ -56,14 +56,14 @@ int recv_timeout(int s, int timeout)
 
 void *clientThread(void *arg)
 {
-    short port = 8080;
+    short port = 49152;
     const char *serverIp = "127.0.0.1";
 
     // Send message to the client socket
     pthread_mutex_lock(&lock);
     printf("In thread\n");
-    char message[1000];
-    char buffer[1024];
+    char message[BUFF_SIZE];
+    char buffer[BUFF_SIZE];
     int clientSocket;
     struct sockaddr_in serverAddr;
     socklen_t addr_size;
