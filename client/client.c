@@ -51,6 +51,7 @@ int recv_timeout(int s, int timeout)
             gettimeofday(&begin, NULL);
         }
     }
+    
     return total_size;
 }
 
@@ -126,21 +127,25 @@ void *clientThread(void *arg)
 
 int main()
 {
-
     int i = 0;
     pthread_t tid[3];
+
     while (i < 3)
     {
         if (pthread_create(&tid[i], NULL, clientThread, NULL) != 0)
             printf("Failed to create thread\n");
+
         i++;
     }
+
     sleep(2);
     i = 0;
+    
     while (i < 3)
     {
         pthread_join(tid[i++], NULL);
         printf("Thread %d dead \n", i);
     }
+
     return 0;
 }

@@ -19,4 +19,4 @@ pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
 void *cientThread(void *arg);
 
-#endif // !_CLIENT_H
+#endif

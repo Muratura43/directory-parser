@@ -6,7 +6,7 @@ void socketThread(int clientSocket)
     char buffer[BUFF_SIZE];
     int newSocket = clientSocket;
 
-    //Receive a reply from the client
+    // Receive a reply from the client
     if (recv(newSocket, client_message, BUFF_SIZE, 0) < 0)
     {
         perror("Recv failed");
@@ -22,9 +22,11 @@ void socketThread(int clientSocket)
     strcat(message, client_message);
     strcat(message, "\n");
     strcpy(buffer, message);
+
     free(message);
     pthread_mutex_unlock(&lock);
     sleep(1);
+
     send(newSocket, buffer, 13, 0);
     printf("Exit socketThread \n");
     close(newSocket);
@@ -107,5 +109,6 @@ int main()
             }
         }
     }
+    
     return 0;
 }
